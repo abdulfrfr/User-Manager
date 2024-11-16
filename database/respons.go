@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-func Res(res http.ResponseWriter, result []Users) {
+func Res[U []Users | Users | map[string]string](res http.ResponseWriter, result U) {
 
 	res.Header().Set("Content-type", "application/json")
 

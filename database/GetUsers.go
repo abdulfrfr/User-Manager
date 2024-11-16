@@ -30,7 +30,7 @@ func GetUsers(res http.ResponseWriter) error {
 
 	}
 
-	Res(res, allUsers)
+	Res[[]Users](res, allUsers)
 	log.Println(allUsers)
 	return nil
 }
