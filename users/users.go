@@ -7,7 +7,7 @@ import (
 	"github.com/user-manager/database"
 )
 
-func CreateUser(res http.ResponseWriter, req *http.Request) {
+func GetUsers(res http.ResponseWriter, req *http.Request) {
 
 	res.Header().Set("Content-type", "application/json")
 

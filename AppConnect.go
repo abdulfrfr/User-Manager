@@ -10,7 +10,7 @@ import (
 
 func connect(address string) {
 
-	http.HandleFunc("GET /", users.CreateUser)
+	http.HandleFunc("GET /", users.GetUsers)
 
 	err := database.Connection()
 
