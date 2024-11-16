@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/user-manager/database"
+	"github.com/abdulfrfr/user-manager/database"
 )
 
 func GetUsers(res http.ResponseWriter, req *http.Request) {

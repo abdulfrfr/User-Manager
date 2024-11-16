@@ -4,8 +4,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/user-manager/database"
-	"github.com/user-manager/users"
+	"github.com/abdulfrfr/user-manager/database"
+	"github.com/abdulfrfr/user-manager/users"
 )
 
 func connect(address string) {
