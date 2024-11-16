@@ -31,6 +31,5 @@ func GetUsers(res http.ResponseWriter) error {
 	}
 
 	Res(res, allUsers)
-	log.Println(allUsers)
 	return nil
 }
