@@ -9,8 +9,6 @@ import (
 
 func GetUsers(res http.ResponseWriter, req *http.Request) {
 
-	res.Header().Set("Content-type", "application/json")
-
 	err := database.GetUsers(res)
 
 	if err != nil {
