@@ -20,6 +20,9 @@ func connect(address string) {
 		log.Fatal(err)
 	}
 
-	http.ListenAndServe(address, nil)
+	err = http.ListenAndServe(address, nil)
+	if err != nil {
+		panic(err)
+	}
 
 }
