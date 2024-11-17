@@ -22,7 +22,20 @@ func Login(res http.ResponseWriter, req *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
+	user, errs := database.Login(res, credential.Username)
 
-	database.Login(res)
+	if errs != nil {
+		log.Fatal(errs)
+	}
+	if credential.Username == user {
+		signedToken, err := generateToken(credential.Username)
 
+		if err != nil {
+			log.Fatal(err)
+		}
+		log.Println(signedToken)
+	}
+
+	res.Header().Set("Content-type", "application/json")
+	res.WriteHeader(http.StatusOK)
 }
