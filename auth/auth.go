@@ -8,7 +8,6 @@ import (
 )
 
 var secretKey = []byte("my-secret-key")
-var signedToken string
 
 // generates and returns a new signed token, signed using our secretKey from above.
 func generateToken(user string) (interface{}, error) {
@@ -18,8 +17,7 @@ func generateToken(user string) (interface{}, error) {
 			"exp":      time.Now().Add(time.Hour * 24).Unix(),
 		})
 
-	var err error
-	signedToken, err = token.SignedString(secretKey)
+	signedToken, err := token.SignedString(secretKey)
 
 	if err != nil {
 		return nil, err
@@ -28,12 +26,10 @@ func generateToken(user string) (interface{}, error) {
 	return signedToken, nil
 }
 
+// verify token passed from headers when requesting resources that are secured.
 func verifyToken(token string) (bool, error) {
-	token = signedToken
-
-	key := secretKey
 	verifiedToken, err := jwt.Parse(token, func(t *jwt.Token) (interface{}, error) {
-		return key, nil
+		return secretKey, nil
 	})
 
 	if err != nil {
