@@ -8,6 +8,8 @@ import (
 	"github.com/abdulfrfr/user-manager/users"
 )
 
+// function for database and http connections, semi-entry point for our application.
+
 func connect(address string) {
 
 	http.HandleFunc("GET /", users.GetUsers)

@@ -1,7 +1,6 @@
 package database
 
 import (
-	"log"
 	"net/http"
 )
 
@@ -10,6 +9,7 @@ type Users struct {
 	Name string `json:"name"`
 }
 
+// function to query database to get all rows in the list table serves as a semi handler for our GetUser handle function, makes use of the database connection object from the DatabaseConnection.go file
 func GetUsers(res http.ResponseWriter) error {
 	row, err := connected.DB.Query("SELECT * FROM list")
 
@@ -23,7 +23,7 @@ func GetUsers(res http.ResponseWriter) error {
 		err = row.Scan(&singleUser.ID, &singleUser.Name)
 
 		if err != nil {
-			log.Fatal(err)
+			errorRes(res, err)
 		}
 
 		allUsers = append(allUsers, singleUser)

@@ -12,6 +12,7 @@ type DBCOnnection struct {
 
 var connected = DBCOnnection{}
 
+// Database connection initiation and the connection object created.
 func Connection() error {
 	db, err := sql.Open("postgres", "user=gotest dbname=gotest password=pass#123 sslmode=disable")
 	if err != nil {
